@@ -20,16 +20,25 @@ class App extends Component {
  
   }
   produitChange(id, quantite){
-    console.log("produit change dans App", id, quantite);
-    this.props.produitChange(id, quantite);
+   
+    const produits = this.state.produits;
+    produits.map((produit)=> {
+      if(produit.id === id) {
+        produit.quantite = quantite;
+      }
+      return produit;
+    })
+  this.setState({ produits: produits })
 }
   render() { 
+    const produitsPanier = this.state.produits.filter((produit) => produit.quantite !== 0);
+
     return ( 
    <BrowserRouter>
-  <Header />
+     <Header />
      <Routes>
       <Route path='/catalogue' element={<Catalogue produits={this.state.produits} produitChange={(id, quantite)=>this.produitChange(id, quantite)} />} />
-      <Route path='/panier' element={<Panier />} />
+      <Route path='/panier' element={<Panier produitsPanier={produitsPanier}/>} />
       <Route path='/' element={<Acceuil />} />
    
      </Routes>

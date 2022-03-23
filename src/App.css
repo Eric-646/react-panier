@@ -8,3 +8,12 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
+.tablePanier {
+border-collapse:collapse;
+}
+.tablePanier th, td {
+border: 1px solid black;
+padding: 5px;
+text-align: center;
+}

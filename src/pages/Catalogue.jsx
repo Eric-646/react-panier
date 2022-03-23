@@ -4,11 +4,11 @@ import Produit from '../components/produit/Produit';
 class Catalogue extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {}
     }
 
     produitChange(id, quantite){
-        console.log("produit change dans catalogue", id, quantite);
+        this.props.produitChange(id, quantite);
     }
     render() { 
         return ( 
@@ -21,8 +21,8 @@ class Catalogue extends Component {
                    })
                }
             </section>
-            
             </>
+            
          );
     }
 }
